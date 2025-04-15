@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Color Detection</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <style>
+        body { font-family: sans-serif; margin: 20px; background-color: #f0f0f0; }
+        h1, h2 { text-align: center; color: #333; }
+        #container { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        #video-container { border: 1px solid #ccc; background-color: #fff; padding: 10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); }
+        #outputCanvas { display: block; margin: 0 auto; max-width: 100%; height: auto; background-color: #eee; cursor: crosshair; }
+        #results-container { width: 90%; max-width: 640px; border: 1px solid #ccc; background-color: #fff; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); min-height: 100px; }
+        #results ul { list-style: none; padding: 0; }
+        #results li { margin-bottom: 5px; font-size: 0.9em; }
+        #results li b { color: #0056b3; }
+        #results li small { color: #555; }
+        #status-bar { margin-top: 15px; text-align: center; font-weight: bold; color: #444; font-size: 0.9em; }
+        #status-bar span { color: #d9534f; font-weight: bold;}
+        #webcamVideo { display: none; }
+    </style>
+</head>
+<body>
+    <h1>Real-Time Color Detection</h1>
+
+    <div id="container">
+        <div id="video-container">
+            <canvas id="outputCanvas" width="640" height="480"></canvas>
+            <video id="webcamVideo" width="640" height="480" autoplay playsinline></video>
+             <div id="status-bar"> <!-- Status bar below canvas -->
+                 Mode:<span id="modeStatus"> Initializing...</span> | Log ('l') <!-- REMOVED Toggle Pose -->
+             </div>
+        </div>
+
+        <div id="results-container"> <!-- Results section separate -->
+            <h2>Detected Colors</h2>
+            <div id="results">
+                <p>Status: Initializing...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
